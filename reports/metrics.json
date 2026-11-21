@@ -1,0 +1,14 @@
+{
+  "test_accuracy": 0.976391982182628,
+  "test_top3_accuracy": 0.999554565701559,
+  "macro_f1": 0.9761071148752347,
+  "weighted_f1": 0.9763918181521608,
+  "best_val_accuracy": 0.9840531561461794,
+  "n_train": 7473,
+  "n_val": 1505,
+  "n_test": 2245,
+  "n_classes": 38,
+  "image_size": 160,
+  "backbone": "MobileNetV2 (ImageNet)",
+  "model_size_mb": 9.34
+}

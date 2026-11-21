@@ -1,0 +1,14 @@
+__pycache__/
+*.pyc
+data/plantvillage_subset
+data/plantvillage_subset/
+data/raw/
+.streamlit/secrets.toml
+.ipynb_checkpoints/
+.DS_Store
+
+# personal interview notes (kept local)
+EXPLAIN.md
+EXPLAIN.pdf
+EXPLAIN.html
+*.template.md

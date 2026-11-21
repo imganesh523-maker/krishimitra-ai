@@ -1,0 +1,71 @@
+train=7473 val=1505 test=2245 classes=38
+{'phase': 'head', 'epoch': 1, 'train_loss': 2.141203245930957, 'train_acc': 0.6350863107185869, 'val_loss': 1.4312460535784497, 'val_acc': 0.8179401993355482, 'secs': 112}
+{'phase': 'head', 'epoch': 2, 'train_loss': 1.4249151159956739, 'train_acc': 0.8105178643115215, 'val_loss': 1.2546996529712233, 'val_acc': 0.8598006644518272, 'secs': 120}
+{'phase': 'head', 'epoch': 3, 'train_loss': 1.3399956067945527, 'train_acc': 0.8265756724207146, 'val_loss': 1.2241631158562594, 'val_acc': 0.867109634551495, 'secs': 133}
+{'phase': 'finetune', 'epoch': 4, 'train_loss': 1.130271923473429, 'train_acc': 0.8873277131004951, 'val_loss': 0.9678747179896332, 'val_acc': 0.9415282392026578, 'secs': 206}
+{'phase': 'finetune', 'epoch': 5, 'train_loss': 0.9811591466842176, 'train_acc': 0.9387126990499131, 'val_loss': 0.9043993006512968, 'val_acc': 0.9647840531561461, 'secs': 212}
+{'phase': 'finetune', 'epoch': 6, 'train_loss': 0.9211885531264807, 'train_acc': 0.9557072126321424, 'val_loss': 0.8683897472695259, 'val_acc': 0.9641196013289036, 'secs': 221}
+{'phase': 'finetune', 'epoch': 7, 'train_loss': 0.8860896750018409, 'train_acc': 0.9648066372273518, 'val_loss': 0.8418067698066812, 'val_acc': 0.9720930232558139, 'secs': 214}
+{'phase': 'finetune', 'epoch': 8, 'train_loss': 0.8616760823440475, 'train_acc': 0.9744413220928677, 'val_loss': 0.827745600356612, 'val_acc': 0.9754152823920266, 'secs': 220}
+{'phase': 'finetune', 'epoch': 9, 'train_loss': 0.8396308540931017, 'train_acc': 0.9793924795932022, 'val_loss': 0.8183833265621401, 'val_acc': 0.9774086378737542, 'secs': 216}
+{'phase': 'finetune', 'epoch': 10, 'train_loss': 0.829539750532566, 'train_acc': 0.9805968152013916, 'val_loss': 0.8089573666898912, 'val_acc': 0.9840531561461794, 'secs': 218}
+{'phase': 'finetune', 'epoch': 11, 'train_loss': 0.8218146511689417, 'train_acc': 0.9839421918908069, 'val_loss': 0.807426778739473, 'val_acc': 0.9820598006644519, 'secs': 213}
+{
+  "test_accuracy": 0.976391982182628,
+  "test_top3_accuracy": 0.999554565701559,
+  "macro_f1": 0.9761071148752347,
+  "weighted_f1": 0.9763918181521608,
+  "best_val_accuracy": 0.9840531561461794,
+  "n_train": 7473,
+  "n_val": 1505,
+  "n_test": 2245,
+  "n_classes": 38,
+  "image_size": 160,
+  "backbone": "MobileNetV2 (ImageNet)",
+  "model_size_mb": 9.34
+}
+                                                    precision    recall  f1-score   support
+
+                                Apple - Apple scab      0.983     0.967     0.975        60
+                                 Apple - Black rot      1.000     1.000     1.000        60
+                          Apple - Cedar apple rust      1.000     1.000     1.000        55
+                                   Apple - healthy      0.949     0.933     0.941        60
+                               Blueberry - healthy      0.983     0.983     0.983        60
+          Cherry (including sour) - Powdery mildew      1.000     1.000     1.000        60
+                 Cherry (including sour) - healthy      1.000     1.000     1.000        60
+Corn (maize) - Cercospora leaf spot Gray leaf spot      0.877     0.950     0.912        60
+                        Corn (maize) - Common rust      1.000     1.000     1.000        60
+               Corn (maize) - Northern Leaf Blight      0.945     0.867     0.904        60
+                            Corn (maize) - healthy      1.000     1.000     1.000        60
+                                 Grape - Black rot      1.000     0.983     0.992        60
+                      Grape - Esca (Black Measles)      0.984     1.000     0.992        60
+        Grape - Leaf blight (Isariopsis Leaf Spot)      1.000     1.000     1.000        60
+                                   Grape - healthy      1.000     1.000     1.000        60
+          Orange - Haunglongbing (Citrus greening)      1.000     1.000     1.000        60
+                            Peach - Bacterial spot      1.000     1.000     1.000        60
+                                   Peach - healthy      1.000     0.983     0.992        60
+                      Pepper bell - Bacterial spot      0.983     0.983     0.983        60
+                             Pepper bell - healthy      0.984     1.000     0.992        60
+                             Potato - Early blight      0.952     1.000     0.976        60
+                              Potato - Late blight      0.982     0.917     0.948        60
+                                  Potato - healthy      0.935     0.967     0.951        30
+                               Raspberry - healthy      1.000     1.000     1.000        60
+                                 Soybean - healthy      0.952     0.983     0.967        60
+                           Squash - Powdery mildew      1.000     1.000     1.000        60
+                          Strawberry - Leaf scorch      1.000     1.000     1.000        60
+                              Strawberry - healthy      1.000     1.000     1.000        60
+                           Tomato - Bacterial spot      0.951     0.967     0.959        60
+                             Tomato - Early blight      0.965     0.917     0.940        60
+                              Tomato - Late blight      0.922     0.983     0.952        60
+                                Tomato - Leaf Mold      0.967     0.967     0.967        60
+                       Tomato - Septoria leaf spot      0.915     0.900     0.908        60
+     Tomato - Spider mites Two-spotted spider mite      0.983     0.950     0.966        60
+                              Tomato - Target Spot      0.891     0.950     0.919        60
+            Tomato - Tomato Yellow Leaf Curl Virus      1.000     0.950     0.974        60
+                      Tomato - Tomato mosaic virus      1.000     1.000     1.000        60
+                                  Tomato - healthy      1.000     1.000     1.000        60
+
+                                          accuracy                          0.976      2245
+                                         macro avg      0.976     0.976     0.976      2245
+                                      weighted avg      0.977     0.976     0.976      2245
+
