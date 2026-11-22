@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KrishiMitra AI · Crop leaf disease detection in your browser</title>
+<meta name="description" content="Diagnose 38 crop leaf conditions from a single photo. MobileNetV2 running fully in the browser with ONNX Runtime Web, class activation heatmaps and bilingual (English/Hindi) treatment advice.">
+<meta name="theme-color" content="#050807">
+<meta property="og:title" content="KrishiMitra AI">
+<meta property="og:description" content="On-device crop leaf disease detection with explainable heatmaps and English/Hindi advice.">
+<meta property="og:image" content="samples/00_Tomato_Late_blight.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%23052e1f'/%3E%3Cpath d='M9 22c0-8 6-13 15-13 0 9-5 15-13 15' fill='none' stroke='%2334d399' stroke-width='2.4' stroke-linecap='round'/%3E%3Cpath d='M9 24c3-4 6-7 10-9' stroke='%23a3e635' stroke-width='2.2' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="bg" aria-hidden="true"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div><div class="grid-bg"></div></div>
+
+<header class="nav" id="nav">
+  <a class="brand" href="#top" aria-label="KrishiMitra AI home">
+    <span class="logo"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22c0-8 6-13 15-13 0 9-5 15-13 15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 24c3-4 6-7 10-9" stroke="#a3e635" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+    <span>KrishiMitra<b>AI</b></span>
+  </a>
+  <nav class="links">
+    <a href="#demo">Demo</a><a href="#how">How it works</a><a href="#performance">Performance</a><a href="#stack">Stack</a>
+  </nav>
+  <a class="btn btn-ghost btn-sm" href="https://github.com/imganesh523-maker/krishimitra-ai" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" class="ic" aria-hidden="true"><path fill="currentColor" d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.53-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+    <span>GitHub</span>
+  </a>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-copy reveal">
+    <span class="pill"><span class="dot"></span>On-device AI · runs 100% in your browser</span>
+    <h1>Diagnose crop disease<br><span class="grad">from a single leaf.</span></h1>
+    <p class="lead">KrishiMitra AI identifies <b>38 crop leaf conditions</b> across 14 crops, shows <b>where it looked</b> with a class activation heatmap, and explains cause, symptoms, treatment and prevention in <b>English and हिंदी</b>. No server, no upload: your photo never leaves this device.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="#demo">Try the live demo <span aria-hidden="true">→</span></a>
+      <a class="btn btn-ghost" href="https://github.com/imganesh523-maker/krishimitra-ai" target="_blank" rel="noopener">View source</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal" aria-hidden="true">
+    <div class="orbit"><div class="ring r1"></div><div class="ring r2"></div></div>
+    <div class="hv-card glass">
+      <div class="hv-img"><img src="samples/00_Tomato_Late_blight.jpg" alt=""><div class="hv-scan"></div><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+      <div class="hv-meta"><span class="mono">mobilenet_v2 · int8</span><span class="mono ok">● ready</span></div>
+    </div>
+    <div class="chip f1 glass"><span class="mono">160×160</span> input</div>
+    <div class="chip f2 glass"><span class="mono">CAM</span> heatmap</div>
+    <div class="chip f3 glass"><span class="mono">0</span> server calls</div>
+  </div>
+  <div class="metrics reveal">
+    <div class="metric glass"><div class="m-val"><span data-count="97.64" data-dec="2">97.64</span>%</div><div class="m-lbl">test accuracy</div></div>
+    <div class="metric glass"><div class="m-val"><span data-count="38">38</span></div><div class="m-lbl">disease classes</div></div>
+    <div class="metric glass"><div class="m-val"><span data-count="11223" data-sep="1">11,223</span></div><div class="m-lbl">labelled images</div></div>
+    <div class="metric glass"><div class="m-val sm">MobileNetV2</div><div class="m-lbl">ImageNet transfer learning</div></div>
+  </div>
+</section>
+
+<!-- ============ DEMO ============ -->
+<section id="demo" class="section">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Live demo</span>
+    <h2>Drop a leaf. Get a diagnosis in milliseconds.</h2>
+    <p>The model is downloaded once and runs locally with ONNX Runtime Web (WebAssembly). Try a sample from the held-out test set, or use your own photo of a single leaf.</p>
+  </div>
+
+  <div class="demo glass reveal" id="demoPanel">
+    <div class="spot" aria-hidden="true"></div>
+    <!-- left: input + viewer -->
+    <div class="d-left">
+      <div class="model-bar">
+        <div class="mstatus" id="mstatus"><span class="led"></span><span id="mtext">Loading model…</span></div>
+        <div class="seg" role="group" aria-label="Model precision">
+          <button class="seg-btn active" data-prec="int8" title="Quantized INT8 · 3.0 MB">INT8</button>
+          <button class="seg-btn" data-prec="fp32" title="Full precision FP32 · 9.3 MB">FP32</button>
+        </div>
+      </div>
+      <div class="mprogress" id="mprogress"><i></i></div>
+
+      <div class="viewer" id="viewer" tabindex="0" role="button" aria-label="Upload a leaf image: click, drop or paste">
+        <input type="file" id="file" accept="image/*" hidden>
+        <div class="drop-empty" id="dropEmpty">
+          <div class="drop-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 16V4m0 0-4 4m4-4 4 4M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="drop-t">Drop a leaf photo here</div>
+          <div class="drop-s">or <u>browse</u> · paste with Ctrl+V · JPG / PNG / WebP</div>
+        </div>
+        <canvas id="photo" width="480" height="480" aria-label="Leaf image as seen by the model"></canvas>
+        <canvas id="heat" width="160" height="160" aria-hidden="true"></canvas>
+        <div class="scan" id="scan" aria-hidden="true"><div class="scan-grid"></div><div class="scan-line"></div><div class="scan-label mono">analysing · mobilenet_v2</div><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i></div>
+        <button class="replace" id="replaceBtn" type="button" title="Use another photo">Replace</button>
+      </div>
+
+      <div class="heat-ctl" id="heatCtl">
+        <label class="switch"><input type="checkbox" id="heatToggle" checked><span></span>Heatmap</label>
+        <input type="range" id="opacity" min="0" max="100" value="55" aria-label="Heatmap opacity">
+        <span class="mono op-val" id="opVal">55%</span>
+        <div class="legend" aria-hidden="true"><span>low</span><i></i><span>high</span></div>
+      </div>
+
+      <div class="samples-head"><span>Sample leaves</span><span class="muted">held-out test images</span></div>
+      <div class="samples" id="samples"></div>
+    </div>
+
+    <!-- right: result -->
+    <div class="d-right">
+      <div class="result-empty" id="resultEmpty">
+        <div class="re-art" aria-hidden="true"><span></span><span></span><span></span></div>
+        <h3>Waiting for a leaf</h3>
+        <p>Pick a sample on the left or drop your own photo. You will get the diagnosis, the top-3 alternatives, a heatmap of where the model looked, and remedies in English or Hindi.</p>
+      </div>
+
+      <div class="result" id="result" hidden>
+        <div class="r-top">
+          <div class="ring-wrap">
+            <svg viewBox="0 0 120 120" class="cring"><circle cx="60" cy="60" r="52" class="track"/><circle cx="60" cy="60" r="52" class="bar" id="ringBar"/></svg>
+            <div class="ring-txt"><span id="confVal">0</span><small>%</small><em id="confLbl">confidence</em></div>
+          </div>
+          <div class="r-names">
+            <div class="r-kicker" id="kDiag">Diagnosis</div>
+            <div class="r-plant" id="rPlant">—</div>
+            <div class="r-disease" id="rDisease">—</div>
+            <div class="r-badges"><span class="badge" id="rType">—</span><span class="badge ghost mono" id="rTime">— ms</span></div>
+          </div>
+          <div class="seg lang" role="group" aria-label="Advice language">
+            <button class="seg-btn active" data-lang="en">EN</button>
+            <button class="seg-btn hi" data-lang="hi">हिंदी</button>
+          </div>
+        </div>
+
+        <div class="alert" id="alert" hidden></div>
+
+        <div class="top3">
+          <div class="t3-head" id="kTop3">Top-3 predictions</div>
+          <div id="top3"></div>
+        </div>
+
+        <div class="tabs" role="tablist" id="tabs">
+          <button role="tab" class="tab active" data-tab="cause"><span id="tCause">Cause</span></button>
+          <button role="tab" class="tab" data-tab="symptoms"><span id="tSymptoms">Symptoms</span></button>
+          <button role="tab" class="tab" data-tab="treatment"><span id="tTreatment">Treatment</span></button>
+          <button role="tab" class="tab" data-tab="prevention"><span id="tPrevention">Prevention</span></button>
+        </div>
+        <div class="tab-body" id="tabBody" role="tabpanel"></div>
+        <p class="fineprint" id="fine">AI-based aid, not a final diagnosis. Confirm with your local Krishi Vigyan Kendra (KVK) before applying any chemical.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section id="how" class="section">
+  <div class="sec-head reveal">
+    <span class="eyebrow">How it works</span>
+    <h2>From pixels to advice, entirely on-device.</h2>
+    <p>A compact five-stage pipeline. Every stage after the download happens inside this tab.</p>
+  </div>
+  <div class="pipeline">
+    <div class="step glass reveal"><span class="num mono">01</span><h4>Capture</h4><p>Photo from upload, drag-and-drop, paste or the sample gallery. Decoded locally by the browser.</p></div>
+    <div class="step glass reveal"><span class="num mono">02</span><h4>Preprocess</h4><p>Resize short side to 176 px, centre-crop 160×160, ImageNet mean/std normalisation into an NCHW float tensor, the same transform as training.</p></div>
+    <div class="step glass reveal"><span class="num mono">03</span><h4>Infer</h4><p>MobileNetV2 fine-tuned on PlantVillage, exported to ONNX (opset 17) and quantized to INT8, executed by ONNX Runtime Web on WebAssembly.</p></div>
+    <div class="step glass reveal"><span class="num mono">04</span><h4>Explain</h4><p>The graph also returns class activation maps. The top class's 5×5 map is upsampled bilinearly and blended over the leaf as a heatmap.</p></div>
+    <div class="step glass reveal"><span class="num mono">05</span><h4>Advise</h4><p>The label is mapped to a curated bilingual knowledge base: cause, symptoms, treatment and prevention for all 38 classes.</p></div>
+  </div>
+  <div class="math glass reveal">
+    <div>
+      <h4>Why the browser heatmap is exact Grad-CAM</h4>
+      <p>MobileNetV2 ends in global-average-pooling followed by one linear layer. For class <i>c</i>, the gradient of the score with respect to feature map <i>A<sub>k</sub></i> is the constant <i>w<sub>ck</sub></i>/(H·W), so Grad-CAM's channel weights are just the classifier weights. That reduces to the classic CAM, which I bake into the ONNX graph as a 1×1 convolution, so no gradients or autograd are needed in the browser. Verified against the PyTorch Grad-CAM: max absolute difference 1e-5.</p>
+    </div>
+    <pre class="mono eq">M<sub>c</sub>(x,y) = ReLU( Σ<sub>k</sub> w<sub>ck</sub> · A<sub>k</sub>(x,y) )
+logits<sub>c</sub> = Σ<sub>k</sub> w<sub>ck</sub> · GAP(A<sub>k</sub>) + b<sub>c</sub>
+A ∈ ℝ<sup>1280×5×5</sup>   w ∈ ℝ<sup>38×1280</sup></pre>
+  </div>
+</section>
+
+<!-- ============ PERFORMANCE ============ -->
+<section id="performance" class="section">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Model performance</span>
+    <h2>Measured on images the model never saw.</h2>
+    <p>Balanced PlantVillage subset: 7,473 train / 1,505 validation / 2,245 test images. The test images come from the dataset's separate test split and were never used for training or model selection.</p>
+  </div>
+  <div class="kpis">
+    <div class="kpi glass reveal"><b>97.64%</b><span>Top-1 test accuracy</span></div>
+    <div class="kpi glass reveal"><b>99.96%</b><span>Top-3 test accuracy</span></div>
+    <div class="kpi glass reveal"><b>0.976</b><span>Macro F1 (38 classes)</span></div>
+    <div class="kpi glass reveal"><b>98.41%</b><span>Best validation accuracy</span></div>
+  </div>
+  <div class="parity glass reveal">
+    <div class="p-head"><h4>PyTorch → ONNX parity</h4><span class="muted">2,245 test images</span></div>
+    <div class="table-wrap">
+    <table>
+      <thead><tr><th>Runtime</th><th>Size</th><th>Accuracy</th><th>Top-1 agreement with PyTorch</th></tr></thead>
+      <tbody>
+        <tr><td>PyTorch FP32 (reference)</td><td class="mono">9.3 MB</td><td class="mono">97.64%</td><td class="mono">—</td></tr>
+        <tr><td>ONNX FP32</td><td class="mono">9.3 MB</td><td class="mono">97.64%</td><td class="mono">100.00%</td></tr>
+        <tr class="hl"><td>ONNX INT8 (static QDQ, per-channel) · default</td><td class="mono">3.0 MB</td><td class="mono">97.82%</td><td class="mono">99.06%</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+  <div class="figs">
+    <figure class="fig glass reveal wide"><figcaption>Training curves · head-only warm-up, then fine-tuning</figcaption><img src="img/training_curves.png" alt="Training and validation accuracy and loss per epoch" loading="lazy"></figure>
+    <figure class="fig glass reveal"><figcaption>Confusion matrix · held-out test set (n = 2,245)</figcaption><a href="img/confusion_matrix.png" target="_blank" rel="noopener"><img src="img/confusion_matrix.png" alt="Confusion matrix for 38 classes on the test set" loading="lazy"></a><span class="muted small">Click to open full size</span></figure>
+  </div>
+</section>
+
+<!-- ============ STACK ============ -->
+<section id="stack" class="section">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Tech stack</span>
+    <h2>Small, fast, dependency-light.</h2>
+  </div>
+  <div class="stack">
+    <div class="tech glass reveal"><b>PyTorch</b><span>Training, fine-tuning, evaluation</span></div>
+    <div class="tech glass reveal"><b>MobileNetV2</b><span>torchvision, ImageNet weights</span></div>
+    <div class="tech glass reveal"><b>ONNX</b><span>Opset 17 export + INT8 QDQ quantization</span></div>
+    <div class="tech glass reveal"><b>ONNX Runtime Web</b><span>WebAssembly inference in the browser</span></div>
+    <div class="tech glass reveal"><b>Grad-CAM / CAM</b><span>Explainability, baked into the graph</span></div>
+    <div class="tech glass reveal"><b>Streamlit</b><span>Python app for local use</span></div>
+    <div class="tech glass reveal"><b>Vanilla JS + CSS</b><span>No framework, no build step</span></div>
+    <div class="tech glass reveal"><b>GitHub Pages</b><span>Static hosting, zero backend</span></div>
+  </div>
+</section>
+
+<!-- ============ DISCLAIMER ============ -->
+<section class="section">
+  <div class="disclaimer glass reveal">
+    <div class="d-ic" aria-hidden="true">!</div>
+    <div>
+      <h4>An aid, not a final diagnosis</h4>
+      <p>Predictions can be wrong, especially for crops or diseases outside the 38 supported classes, blurry photos, or leaves photographed against busy backgrounds. Before buying or spraying any chemical, please consult your local <b>Krishi Vigyan Kendra (KVK)</b> or agriculture officer and follow the product label.</p>
+      <p class="hi-text">यह AI आधारित सहायता है, अंतिम निदान नहीं। कोई भी दवा डालने से पहले नज़दीकी कृषि विज्ञान केंद्र (KVK) या कृषि अधिकारी से सलाह लें।</p>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="f-inner">
+    <div class="f-brand"><span class="logo sm"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 22c0-8 6-13 15-13 0 9-5 15-13 15" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/><path d="M9 24c3-4 6-7 10-9" stroke="#a3e635" stroke-width="2.2" stroke-linecap="round"/></svg></span><div><b>KrishiMitra AI</b><span>Built by Ganesh Kumar</span></div></div>
+    <div class="f-links">
+      <a href="https://github.com/imganesh523-maker/krishimitra-ai" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/ganesh-kumar-924192451/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+  <p class="f-note">Dataset: PlantVillage (Hughes &amp; Salathé, 2015). MIT licensed. Runs on ONNX Runtime Web.</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/onnxruntime-web@1.22.0/dist/ort.wasm.min.js" crossorigin="anonymous"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
