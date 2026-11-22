@@ -30,6 +30,15 @@ license: mit
 
 ---
 
+
+## 🌐 Live Demo
+
+**Try it in your browser:** https://imganesh523-maker.github.io/krishimitra-ai/
+
+Runs fully client-side with **onnxruntime-web** — no server, the photo never leaves your device. INT8-quantized ONNX model (2.99 MB, 97.82% test accuracy) with exact in-browser class activation heatmaps.
+
+![Web demo](assets/web_demo.png)
+
 ## 🌾 The problem
 
 Plant diseases cause large crop losses every season, and many small farmers cannot get an expert to their field quickly. Most diseases are first visible on the **leaves**, so a phone photo is often enough for an early, first-level check. KrishiMitra ("friend of the farmer") gives:
